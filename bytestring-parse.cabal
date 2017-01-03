@@ -19,12 +19,23 @@ library
     Data.ByteString.Parser
     -- Data.ByteString.Parser.Int
     Data.ByteString.Parser.Integral
+    Data.ByteString.Incremental
+    -- Data.ByteString.Another
+    Data.Aeson.Grab
+    Data.Aeson.Grab2
   default-language:    Haskell2010
   build-depends:
       base >= 4.7 && < 5
     , bytestring
     , ghc-prim
     , vector
+    , streaming-bytestring
+    , streaming
+    , profunctors
+    , unordered-containers
+    , aeson
+    , text
+    , scientific
 
 test-suite test
   type: exitcode-stdio-1.0

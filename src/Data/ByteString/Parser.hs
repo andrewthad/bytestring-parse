@@ -3,8 +3,24 @@
 
 {-# OPTIONS_GHC -Wall #-}
 
-module Data.ByteString.Parser where
+module Data.ByteString.Parser 
+  ( Parser(..)
+  , Result(..)
+  , replicate
+  , replicateUnbox
+  , satisfy
+  , any
+  , takeWhile
+  , takeTillWord8
+  , endOfInput
+  , parse
+  -- Internal stuff
+  , Step(..)
+  , success
+  , failure
+  ) where
 
+import Prelude hiding (replicate,any,takeWhile)
 import Data.ByteString (ByteString)
 import Data.Word (Word8)
 import Unsafe.Coerce (unsafeCoerce)
