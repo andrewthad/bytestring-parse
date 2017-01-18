@@ -44,7 +44,7 @@ runGrab x a = case x of
   GrabPure b -> Just b
   GrabOne f -> f a
   GrabAp g f -> do
-    func <- runGrab f a 
+    func <- runGrab f a
     val <- runGrab g a
     return (func val)
   GrabCompose f g -> runGrab f =<< runGrab g a
@@ -71,13 +71,13 @@ array = GrabOne $ \x -> case x of
 --   GrabOne f -> GrabOne (\a -> mapM f a)
 --   GrabCompose m n -> GrabCompose (mapGrab m) (mapGrab n)
 --   GrabAp a f -> GrabAp (mapGrab a) (fmap map f)
--- 
+--
 -- helpMap :: Grab c (a -> b) -> Grab [c] ([a] -> [b])
 -- helpMap x = case x of
 --   GrabAp a f -> GrabAp (mapGrab a) (fmap map f)
 
-joinGrab :: Grab [[b]] [b] 
-joinGrab = GrabAp C.id (GrabPure join) 
+joinGrab :: Grab [[b]] [b]
+joinGrab = GrabAp C.id (GrabPure join)
 
 ex1 :: Grab Aeson.Value Text
 ex1 = id
@@ -108,7 +108,7 @@ ex2 = id
 
 -- ex3 :: Grab Aeson.Value [Text]
 -- ex3 = id
---   . mapGrab 
+--   . mapGrab
 --     ( string . key "name"
 --     )
 --   . joinGrab

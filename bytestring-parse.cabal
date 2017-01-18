@@ -13,7 +13,7 @@ build-type:          Simple
 cabal-version:       >=1.10
 extra-source-files:  README.md
 
-library 
+library
   hs-source-dirs:      src
   exposed-modules:
     Data.ByteString.Parser
@@ -23,6 +23,7 @@ library
     -- Data.ByteString.Another
     Data.Aeson.Grab
     Data.Aeson.Grab2
+    Data.Aeson.Free
   default-language:    Haskell2010
   build-depends:
       base >= 4.7 && < 5
@@ -36,6 +37,7 @@ library
     , aeson
     , text
     , scientific
+    , transformers
 
 test-suite test
   type: exitcode-stdio-1.0
